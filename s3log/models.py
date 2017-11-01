@@ -1,3 +1,21 @@
 from django.db import models
 
-# Create your models here.
+class S3AccessLog(models.Model):
+    bucket_owner = models.CharField(max_length=1024)
+    bucket_name = models.CharField(max_length=1024)
+    request_datetime = models.DateTimeField()
+    remote_ip = models.CharField(max_length=1024)
+    requesta = models.CharField(max_length=1024)
+    request_id = models.CharField(max_length=1024)
+    operation = models.CharField(max_length=1024)
+    request_key = models.CharField(max_length=1024)
+    request_uri = models.CharField(max_length=1024)
+    http_status = models.IntegerField()
+    error_code = models.CharField(max_length=1024)
+    bytes_sent = models.IntegerField()
+    object_size = models.IntegerField()
+    total_time = models.IntegerField()
+    turn_around_time = models.IntegerField()
+    referrer = models.CharField(max_length=1024)
+    user_agent = models.CharField(max_length=1024)
+    version_id = models.CharField(max_length=1024)
