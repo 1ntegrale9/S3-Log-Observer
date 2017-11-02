@@ -5,4 +5,6 @@ db.sqlite3
 *.py[co]
 .DS_Store
 log
+log_tmp
+log_old
 
