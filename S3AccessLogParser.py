@@ -36,33 +36,33 @@ def GetCoding(filepath):
             SysExit(e, 'cannot open file')
     return SimpleCharDet(TryOpen())
 
-def FileInput(filepath, filecoding):
-    with codecs.open(filepath, mode = 'r', encoding = filecoding) as file: return(file.read())
+def FileInput(filepath):
+    with codecs.open(filepath, mode = 'r', encoding = GetCoding(filepath)) as file: return(file.read())
 
-def LogSplit(filepath, filecoding):
-    if filecoding == 'unknown': return ['error']
-    else:
-        log_list = []
-        for one_str in FileInput(filepath, filecoding).splitlines():
-            log_split, log_elem, paren_flag, quote_flag = [], "", False, False
-            for one_char in list(one_str):
-                if one_char == ' ':
-                    if not paren_flag and not quote_flag:
-                        log_split.append(log_elem)
-                        log_elem = ""
-                    else: log_elem += one_char
-                elif one_char == '[': paren_flag = True
-                elif one_char == ']': paren_flag = False
-                elif one_char == '"': quote_flag = not quote_flag
+def LogSplit(logfile):
+    log_list = []
+    for one_str in logfile.splitlines():
+        log_split, log_elem, paren_flag, quote_flag = [], "", False, False
+        for one_char in list(one_str):
+            if one_char == ' ':
+                if not paren_flag and not quote_flag:
+                    log_split.append(log_elem)
+                    log_elem = ""
                 else: log_elem += one_char
-            log_list.append(log_split)
-        return log_list
+            elif one_char == '[': paren_flag = True
+            elif one_char == ']': paren_flag = False
+            elif one_char == '"': quote_flag = not quote_flag
+            else: log_elem += one_char
+        log_list.append(log_split)
+    return log_list
 
-def LogOutput(dir_path):
-    for filename in os.listdir(dir_path):
-        filepath = dir_path + filename
-        filecoding = GetCoding(filepath)
-        for log in LogSplit(filepath, filecoding): print(log)
+def LogOutput(dirpath):
+    for filename in os.listdir(dirpath):
+        if filecoding == 'unknown':
+            return ['error']
+        else:
+            logfile = FileInput(dirpath + filename)
+            for log in LogSplit(logfile): print(log)
 
 try:
     LogOutput(sys.argv[1])
