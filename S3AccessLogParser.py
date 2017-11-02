@@ -1,6 +1,7 @@
 # coding:utf-8
 
 from __future__ import print_function
+from tqdm import tqdm
 import os
 import sys
 import locale
@@ -38,7 +39,9 @@ def GetCoding(filepath):
     return SimpleCharDet(TryOpen())
 
 def FileInput(filepath):
-    with codecs.open(filepath, mode = 'r', encoding = GetCoding(filepath)) as file: return(file.read())
+    encoding = GetCoding(filepath)
+    print(encoding)
+    with codecs.open(filepath, mode = 'r', encoding = encoding) as file: return(file.read())
 
 def LogNormalize(logfile):
     log_list = []
@@ -58,7 +61,7 @@ def LogNormalize(logfile):
     return log_list
 
 def LogOutput(dirpath):
-    for filename in os.listdir(dirpath):
+    for filename in tqdm(os.listdir(dirpath)):
         try:
             logfile = FileInput(dirpath + filename)
             for s3_log in LogNormalize(logfile):
@@ -67,6 +70,7 @@ def LogOutput(dirpath):
             sys.exit()
         except:
             traceback.print_exc()
+            print(filename)
 
 def S3Keys():
     return ['bucket_owner','bucket_name','request_datetime','remote_ip','requesta','request_id','operation','request_key','request_uri','http_status','error_code','bytes_sent','object_size','total_time','turn_around_time','referrer','user_agent','version_id']

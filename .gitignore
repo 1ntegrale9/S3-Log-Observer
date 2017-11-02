@@ -2,6 +2,7 @@ __pycache__
 staticfiles
 local_settings.py
 db.sqlite3
+db.sqlite3-journal
 *.py[co]
 .DS_Store
 log
