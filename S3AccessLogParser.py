@@ -6,6 +6,7 @@ import sys
 import locale
 import codecs
 import traceback
+import json
 
 def SimpleCharDet(b_str):
     def TryDecode(b_str, c_code):
@@ -39,7 +40,7 @@ def GetCoding(filepath):
 def FileInput(filepath):
     with codecs.open(filepath, mode = 'r', encoding = GetCoding(filepath)) as file: return(file.read())
 
-def LogSplit(logfile):
+def LogNormalize(logfile):
     log_list = []
     for one_str in logfile.splitlines():
         log_split, log_elem, paren_flag, quote_flag = [], "", False, False
@@ -53,17 +54,21 @@ def LogSplit(logfile):
             elif one_char == ']': paren_flag = False
             elif one_char == '"': quote_flag = not quote_flag
             else: log_elem += one_char
-        log_list.append(log_split)
+        log_list.append(dict(zip(S3Keys(), log_split)))
     return log_list
 
 def LogOutput(dirpath):
     for filename in os.listdir(dirpath):
         try:
             logfile = FileInput(dirpath + filename)
-            for log in LogSplit(logfile): print(log)
+            for s3_log in LogNormalize(logfile):
+                print(json.dumps(s3_log, sort_keys=True, indent=4))
         except KeyboardInterrupt:
             sys.exit()
         except:
             traceback.print_exc()
+
+def S3Keys():
+    return ['bucket_owner','bucket_name','request_datetime','remote_ip','requesta','request_id','operation','request_key','request_uri','http_status','error_code','bytes_sent','object_size','total_time','turn_around_time','referrer','user_agent','version_id']
 
 LogOutput(sys.argv[1])
