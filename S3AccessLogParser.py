@@ -58,13 +58,12 @@ def LogSplit(logfile):
 
 def LogOutput(dirpath):
     for filename in os.listdir(dirpath):
-        if filecoding == 'unknown':
-            return ['error']
-        else:
+        try:
             logfile = FileInput(dirpath + filename)
             for log in LogSplit(logfile): print(log)
+        except KeyboardInterrupt:
+            sys.exit()
+        except:
+            traceback.print_exc()
 
-try:
-    LogOutput(sys.argv[1])
-except:
-    traceback.print_exc()
+LogOutput(sys.argv[1])
