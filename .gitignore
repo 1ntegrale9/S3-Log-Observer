@@ -8,4 +8,5 @@ db.sqlite3-journal
 log
 log_tmp
 log_old
+.idea
 
