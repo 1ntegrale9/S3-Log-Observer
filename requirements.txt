@@ -1,0 +1,7 @@
+awscli
+dj-database-url
+Django==1.11
+psycopg2
+psycopg2-binary
+tqdm
+whitenoise
