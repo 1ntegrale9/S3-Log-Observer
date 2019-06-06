@@ -16,16 +16,18 @@ GRANT ALL PRIVILEGES ON DATABASE s3log TO admin;
 \q
 psql -U admin -d s3log
 
-pip3 install -r requirements.txt
+pip3 install pipenv
+pipenv install
 mkdir log/
 aws configure
 awa s3 cp s3://<KEY> ./log/ --region=<REGION> --exclude "*" --include "2018-07-19*" --recursive
-python3 manage.py migrate
-python3 manage.py runserver
+pipenv run python manage.py migrate
+pipenv run python manage.py runserver
 
 ACCESS => http://127.0.0.1:8000/run
 
-python3 manage.py createsuperuser
+pipenv run python manage.py createsuperuser
 
 ACCESS => http://127.0.0.1:8000/admin
 ```
+
