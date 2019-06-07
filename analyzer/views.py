@@ -22,8 +22,7 @@ def input(filepath):
         return ""
 
 
-def parse(logfile):
-    log_list = []
+def parse(logfile, callback):
     for one_str in logfile.splitlines():
         log_split, log_elem, paren_flag, quote_flag = [], "", False, False
         for one_char in list(one_str):
@@ -43,13 +42,10 @@ def parse(logfile):
                 log_elem += one_char
         if log_elem != "":
             log_split.append(log_elem)
-        log_list.append(log_split)
-    return log_list
+        callback(log_split)
 
 
 def output(dirpath):
     for filename in tqdm(os.listdir(dirpath)):
         log = input(dirpath + filename)
-        logs = parse(log)
-        for s3log in tqdm(logs):
-            CreateRecord(s3log)
+        logs = parse(log, CreateRecord)
