@@ -9,8 +9,8 @@ import codecs
 import traceback
 
 def IndexView(request):
-    LogOutput('log/')
-    return render(request,'s3log/index.html')
+    LogOutput('s3log/')
+    return render(request,'analyzer/index.html')
 
 def FileInput(filepath):
     with codecs.open(filepath, mode = 'r', encoding = 'us-ascii') as file:

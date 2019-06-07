@@ -1,5 +1,4 @@
 import os
-import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
@@ -12,7 +11,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    's3log.apps.S3LogConfig',
+    'analyzer.apps.AnalyzerConfig',
 ]
 
 MIDDLEWARE = [
@@ -25,7 +24,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'mysite.urls'
+ROOT_URLCONF = 's3django.urls'
 
 TEMPLATES = [
     {
@@ -43,12 +42,16 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mysite.wsgi.application'
+WSGI_APPLICATION = 's3django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 's3log',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -74,14 +77,4 @@ USE_L10N = True
 USE_TZ = False
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
-
-FORMAT_MODULE_PATH = 'mysite.formats'
-DATABASES['default'] = dj_database_url.config()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-ALLOWED_HOSTS = ['*']
-STATIC_ROOT = 'staticfiles'
-
-from .local_settings import *
+SECRET_KEY = 'secretkey'
