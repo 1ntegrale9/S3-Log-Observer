@@ -23,13 +23,15 @@ def input(filepath):
 
 
 def parse(logfile, callback):
-    for one_str in logfile.splitlines():
+    for one_str in tqdm(logfile.splitlines()):
         log_split, log_elem, paren_flag, quote_flag = [], "", False, False
         for one_char in list(one_str):
             if one_char == ' ':
                 if not paren_flag and not quote_flag:
+                    if log_elem == '-':
+                        log_elem = ''
                     log_split.append(log_elem)
-                    log_elem = ""
+                    log_elem = ''
                 else:
                     log_elem += one_char
             elif one_char == '[':
@@ -40,7 +42,9 @@ def parse(logfile, callback):
                 quote_flag = not quote_flag
             else:
                 log_elem += one_char
-        if log_elem != "":
+        if log_elem != '':
+            if log_elem == '-':
+                log_elem = ''
             log_split.append(log_elem)
         callback(log_split)
 
