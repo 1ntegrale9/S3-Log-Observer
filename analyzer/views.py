@@ -13,13 +13,13 @@ def IndexView(request):
 
 
 def input(filepath):
-    with codecs.open(filepath, mode='r', encoding='us-ascii') as file:
-        try:
+    try:
+        with codecs.open(filepath, mode='r', encoding='us-ascii') as file:
             return(file.read())
-        except Exception:
-            traceback.print_exc()
-            print(filepath)
-            return ""
+    except Exception:
+        traceback.print_exc()
+        print(filepath)
+        return ""
 
 
 def parse(logfile):
