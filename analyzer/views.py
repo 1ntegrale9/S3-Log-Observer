@@ -46,6 +46,7 @@ def parse(log, callback, constraint=None):
     try:
         callback(log_split)
     except Exception as e:
+        print(e)
 
 
 def output(dirpath):
