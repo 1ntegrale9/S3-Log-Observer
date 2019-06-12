@@ -46,6 +46,6 @@ def parse(log, callback):
 
 def output(dirpath):
     for filename in tqdm(os.listdir(dirpath)):
-        log = input(dirpath + filename)
-        for one_str in logfile.splitlines():
+        logs = input(dirpath + filename)
+        for log in logs.splitlines():
             parse(log, CreateRecord)
