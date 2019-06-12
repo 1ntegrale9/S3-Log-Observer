@@ -22,7 +22,9 @@ def input(filepath):
         return ""
 
 
-def parse(log, callback):
+def parse(log, callback, constraint=None):
+    if constraint and (constraint in log):
+        return
     log_split, log_elem, paren_flag, quote_flag = [], "", False, False
     for one_char in list(log):
         if one_char == ' ':
@@ -41,7 +43,9 @@ def parse(log, callback):
             log_elem += one_char
     if log_elem != "":
         log_split.append(log_elem)
-    callback(log_split)
+    try:
+        callback(log_split)
+    except Exception as e:
 
 
 def output(dirpath):
