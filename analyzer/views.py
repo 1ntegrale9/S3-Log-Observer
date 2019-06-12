@@ -23,7 +23,7 @@ def input(filepath):
 
 
 def parse(log, callback, constraint=None):
-    if constraint and (constraint in log):
+    if constraint and not (constraint in log):
         return
     log_split, log_elem, paren_flag, quote_flag = [], "", False, False
     for one_char in list(log):
