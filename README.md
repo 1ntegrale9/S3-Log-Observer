@@ -1,5 +1,4 @@
-# s3django
-Analyzer of AWS S3 logs by Django
+AWS S3 Logs Analyzer by Django
 
 # How to Use
 
