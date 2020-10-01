@@ -5,12 +5,18 @@ verify_ssl = true
 
 [dev-packages]
 pylint = "*"
+flake8 = "*"
 
 [packages]
-django-heroku = "*"
 tqdm = "*"
 awscli = "*"
-pyyaml = "*"
+psycopg2-binary = "*"
+django = "*"
+dj-static = "*"
+dj-database-url = "*"
+gunicorn = "*"
+whitenoise = "*"
+psycopg2 = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
