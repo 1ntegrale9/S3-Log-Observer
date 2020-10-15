@@ -25,18 +25,18 @@
         },
         "awscli": {
             "hashes": [
-                "sha256:8f9c218c7320e7cd9b17c853e48ee40c4f12d1f729fc5c21f3468bde48fe3d4b",
-                "sha256:fae04e9387f971e8fd5982b762252e6c0e2ad3bc10a58c12cf975c73aaf62ab7"
+                "sha256:4f2c7d4b5e9a0a09a50c448af66b51520f3c4c1c6ea07e3aa2b184b83f3a9174",
+                "sha256:5735061f4f945ecfc343581bf1087b8e2021dc001e4a483b11c5c4020292a2c2"
             ],
             "index": "pypi",
-            "version": "==1.18.150"
+            "version": "==1.18.158"
         },
         "botocore": {
             "hashes": [
-                "sha256:35b06b8801eb2dd7e708de35581f9c0304740645874f3af5b8b0c1648f8d6365",
-                "sha256:dc3244170254cbba7dfde00b0489f830069d93dd6a9e555178d989072d7ee7c2"
+                "sha256:4cdb114947391c88787df3e2f6a9f53ee15f1e2fef8691963e959858a034bb02",
+                "sha256:5b1c189a74e4ecc5fcc833b8c8a12c6040c03b5330401a8a8f459f0dba098826"
             ],
-            "version": "==1.18.9"
+            "version": "==1.18.17"
         },
         "colorama": {
             "hashes": [
@@ -123,6 +123,7 @@
                 "sha256:7312e931b90fe14f925729cde58022f5d034241918a5c4f9797cac62f6b3a9dd",
                 "sha256:7d92a09b788cbb1aec325af5fcba9fed7203897bbd9269d5691bb1e3bce29550",
                 "sha256:833709a5c66ca52f1d21d41865a637223b368c0ee76ea54ca5bad6f2526c7679",
+                "sha256:89705f45ce07b2dfa806ee84439ec67c5d9a0ef20154e0e475e2b2ed392a5b83",
                 "sha256:8cd0fb36c7412996859cb4606a35969dd01f4ea34d9812a141cd920c3b18be77",
                 "sha256:950bc22bb56ee6ff142a2cb9ee980b571dd0912b0334aa3fe0fe3788d860bea2",
                 "sha256:a0c50db33c32594305b0ef9abc0cb7db13de7621d2cadf8392a1d9b3c437ef77",
@@ -211,10 +212,10 @@
         },
         "sqlparse": {
             "hashes": [
-                "sha256:022fb9c87b524d1f7862b3037e541f68597a730a8843245c349fc93e1643dc4e",
-                "sha256:e162203737712307dfe78860cc56c8da8a852ab2ee33750e33aeadf38d12c548"
+                "sha256:017cde379adbd6a1f15a61873f43e8274179378e95ef3fede90b5aa64d304ed0",
+                "sha256:0f91fd2e829c44362cbcfab3e9ae12e22badaa8a29ad5ff599f9ec109f0454e8"
             ],
-            "version": "==0.3.1"
+            "version": "==0.4.1"
         },
         "static3": {
             "hashes": [
@@ -265,10 +266,10 @@
         },
         "isort": {
             "hashes": [
-                "sha256:36f0c6659b9000597e92618d05b72d4181104cf59472b1c6a039e3783f930c95",
-                "sha256:ba040c24d20aa302f78f4747df549573ae1eaf8e1084269199154da9c483f07f"
+                "sha256:dcab1d98b469a12a1a624ead220584391648790275560e1a43e54c5dceae65e7",
+                "sha256:dcaeec1b5f0eca77faea2a35ab790b4f3680ff75590bfcb7145986905aab2f58"
             ],
-            "version": "==5.5.4"
+            "version": "==5.6.4"
         },
         "lazy-object-proxy": {
             "hashes": [
